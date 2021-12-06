@@ -1,1 +1,1 @@
-Sitemap: http://www.math.udel.edu/~dguillot/sitemap.xml
+Sitemap: https://dominiqueguillot.github.io/sitemap.xml
