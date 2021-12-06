@@ -1,0 +1,62 @@
+= MATH 567: Mathematical Techniques in Data Science
+
+Dominique Guillot (EWG 534)
+
+University of Delaware
+
+Spring 2017
+
+MW 5:00PM – 6:15PM, Room: TBA
+
+== Description
+
+The course provides an introduction to the fundamental techniques used
+in data science. The main objective of the course is to develop a good practical knowledge and
+a mathematical understanding of the common tools that are used to analyse modern datasets.
+The course also provides hands-on experience in data analysis through practical homework and
+class projects.
+
+== Syllabus
+
+Detailed [./syllabus/MATH567_DataScience-Spring2017_v1.pdf syllabus].
+
+== Textbook
+
+An Introduction to Statistical Learning by James, Witten, Hastie, and Tibshirani. 
+
+The pdf of the book is available for free at [http://www-bcf.usc.edu/~gareth/ISL/].
+
+== Lectures
+
+Lecture notes will be posted prior to the lectures.
+
+~~~
+{}{table}{TLectures}
+|      |           | Topic                   | Reading | Slides | Printable slides||
+Week 1| 02\/06\/2017 | Lecture 1 | Overview            |  Chapter 1       |[./lectures/MATH567-Week1-Overview.pdf pdf]|  [./lectures-handout/MATH567-Week1-handout-Overview.pdf pdf]||
+      | 02\/08\/2017 | Lab 1     | Intro to R          |                  |[./Lab/MATH567-Lab1.pdf pdf] | [./Lab/Lab1.R code]|| 
+Week 2| 02\/13\/2017 | Lecture 2 | Linear Regression   | Chapters 2,3     |[./lectures/MATH567-Week2-LinearRegression.pdf pdf] | [./lectures-handout/MATH567-Week2-handout-LinearRegression.pdf pdf] ||
+	  | 02\/15\/2017 | Lab 2     | Subset selection    | Chapter 6.1      | [./Lab/MATH567-Lab2.pdf pdf] | [./Lab/Lab2.R code]||
+Week 3| 02\/20\/2017 | Lecture 3 | Lasso, Cross-validation | Chapters 5.1, 6.2 | [./lectures/MATH567-Week3-Penalized_methods.pdf pdf] | [./lectures-handout/MATH567-Week3-handout-Penalized_methods.pdf pdf] || 
+      | 02\/22\/2017 | Lab 3     | Lasso Lab                |              | [./Lab/MATH567-Lab3.pdf pdf] | [./Lab/Lab3.R code] ||
+Week 4| 02\/27\/2017 | Lecture 4 | Categorial variables | Chapters 3.5, 4.1,4.2,4.3 | [./lectures/MATH567-Week4-Categorical.pdf pdf] | [./lectures-handout/MATH567-Week4-handout-Categorical.pdf pdf] ||
+      | 03\/01\/2017 | Lab 4     | kNN, logistic regression | | [./Lab/MATH567-Lab4.pdf pdf] | [./Lab/Lab4.R code] ||
+Week 5| 03\/06\/2017 | Lecture 5 | Logistic regression, LDA | Chapters 4.3, 4.4, 4.5 | [./lectures/MATH567-Week5-Logistic-LDA.pdf pdf] | [./lectures-handout/MATH567-Week5-handout-Logistic-LDA.pdf pdf] ||
+      | 03\/08\/2017 | Lab 5     | Mult. Normal, Logistic   |                        | [./Lab/MATH567-Lab5.pdf pdf] | [./Lab/Lab5.R code] ||
+Week 6| 03\/13\/2017 | Lecture 6 | Support vector machines | Chapters 9.1, 9.2       | [./lectures/MATH567-Week6-SVM.pdf pdf] | [./lectures-handout/MATH567-Week6-handout-SVM.pdf pdf] ||
+      | 03\/15\/2017 | Lab 6     | One-vs-all classification|                         | [./Lab/MATH567-Lab6.pdf pdf] | [./Lab/Lab6.R code] ||
+Week 7| 03\/20\/2017 | Lecture 7 | SVM and kernels         | Chapter 9.3             | [./lectures/MATH567-Week7-SVM_kernels.pdf pdf] | [./lectures-handout/MATH567-Week7-handout-SVM_kernels.pdf pdf] ||
+Week 8 | | | *Spring break* | | | || ||
+Week 9 | 04\/03\/2017 | Lecture 8 | PCA | Chapter 10.1, 10.2 | [./lectures/MATH567-Week9-PCA.pdf pdf] | [./lectures-handout/MATH567-Week9-handout-PCA.pdf pdf] ||
+       | 04\/05\/2017 | Lab 7 | PCA | | [./Lab/MATH567-Lab7.pdf pdf] | [./Lab/Lab7.R code] ||
+Week 10| 04\/10\/2017 | Lecture 9 | Neural Networks | |  [./lectures/MATH567-Week10-NN.pdf pdf] | [./lectures-handout/MATH567-Week10-handout-NN.pdf pdf] ||
+       | 04\/12\/2017 | Lab 8 | Neural networks | | [./Lab/MATH567-Lab8.pdf pdf] | [./lectures-handout/MATH567-Lab8-handout.pdf pdf] ||
+Week 11| 04\/17\/2017 | Lecture 10 | Decision Trees | Chapter 8 | [./lectures/MATH567-Week11-Decision-trees.pdf pdf] | [./lectures-handout/MATH567-Week11-handout-Decision-trees.pdf pdf] ||
+       | 04\/19\/2017 | Lab 9 | | Chapter 8.3 | [./Lab/MATH567-Lab9.pdf pdf] | [./Lab/Lab9.R code] ||
+Week 12| 04\/24\/2017 | Lecture 11 | Random Forests | Chapter 8.2 | [./lectures/MATH567-Week12-Random_forest.pdf pdf] | [./lectures-handout/MATH567-Week12-handout-Random_forest.pdf pdf] ||
+       | 04\/26\/2017 | Lab 10 | | | [./Lab/MATH567-Lab10.pdf pdf] | ||
+Week 13| 05\/01\/2017 | Lecture 12 | K-means | Chapter 10.3 | [./lectures/MATH567-Week13-Clustering-I.pdf pdf] | [./lectures-handout/MATH567-Week13-handout-Clustering-I.pdf pdf] ||
+       | 05\/03\/2017 | Lab 11 | | | [./Lab/MATH567-Lab11.pdf pdf] | [./Lab/Lab11.R code] ||
+Week 14| 05\/08\/2017 | Lecture 13 | Spectral Clustering | | [./lectures/MATH567-Week14-Clustering-II.pdf pdf] | [./lectures-handout/MATH567-Week14-handout-Clustering-II.pdf pdf] || 
+       | 05\/10\/2017 | Lab 12 | Clustering | | [./Lab/MATH567-Lab12.pdf pdf] | [./Lab/Lab12.R code] ||
+~~~

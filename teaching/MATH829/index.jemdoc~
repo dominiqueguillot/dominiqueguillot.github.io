@@ -1,0 +1,25 @@
+= MATH 829: Introduction to data mining and analysis
+
+Spring 2016
+
+MWF 11:15AM – 12:05PM, Room: ALS 226 (Alison Hall)
+
+== Textbook
+
+Hastie, Tibshirani, Friedman, /The Elements of Statistical Learning/, Springer, 2013. 
+
+You can download the book in pdf for free [http://statweb.stanford.edu/~tibs/ElemStatLearn/printings/ESLII_print10.pdf here].
+
+== Python
+
+We will use Python during the course. A good Python tutorial is available at [http://www.scipy-lectures.org/].
+
+== Lectures
+
+~~~
+{}{table}{TABLENAME}
+Week 1       |           | Topic                         | Reading | Slides | Printable slides||
+02\/08\/2016 | Lecture 1 | Introduction                  |         |        |                 ||
+02\/10\/2016 | Lecture 2 |                               |         |        |                 || 
+02\/12\/2016 | Lecture 3 |                               |         |        |                
+~~~

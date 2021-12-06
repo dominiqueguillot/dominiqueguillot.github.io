@@ -1,0 +1,82 @@
+= MATH 829: Introduction to data mining and analysis
+
+Dominique Guillot (EWG 534)
+
+University of Delaware
+
+Spring 2016
+
+MWF 11:15AM – 12:05PM, Room: ALS 226 (Alison Hall)
+
+== Syllabus
+
+The midterm will be: March 25th 2016 (in class).
+
+Detailed [./syllabus/MATH829_DataMining_v3.pdf syllabus].
+
+== Textbook
+
+Hastie, Tibshirani, Friedman, /The Elements of Statistical Learning/, Springer, 2013. 
+
+You can download the book in pdf for free [http://web.stanford.edu/~hastie/ElemStatLearn/ here].
+
+== Python
+
+We will use Python during the course. A good Python tutorial is available at [http://www.scipy-lectures.org/].
+
+The following may be useful to Matlab users: [http://mathesaurus.sourceforge.net/matlab-numpy.html]
+
+If you have never used Python before, I recommend using Anaconda Python 3.5 [https://www.continuum.io/]. It contains all the packages 
+we will need.
+
+Here is a Python [./code/S0/intro_to_python.py file] containing useful basic commands to get you started. 
+Try running the commands one by one to familiarize yourself with Python. For those who haven't used Python before, you can 
+run the commands in "idle" (comes with Anaconda).
+
+== Lectures
+
+~~~
+{}{table}{TLectures}
+|      |           | Topic                   | Reading | Slides | Printable slides||
+Week 1| 02\/08\/2016 | Lecture 1 | Introduction            |  ESL, Chapter 1       |[./lectures/0-MATH829-Overview.pdf pdf]|  [./lectures-handout/0-MATH829-Overview-handout.pdf pdf]||
+| 02\/10\/2016 | Lecture 2 | Review of Linear regression       |                       |[./lectures/1-MATH829-LinearRegression.pdf pdf]| [./lectures-handout/1-MATH829-LinearRegression-handout.pdf pdf]|| 
+| 02\/12\/2016 | Lecture 3 | Gauss-Markov Theorem              | ESL, Chapter 3 (up to 3.2.3)|[./lectures/2-MATH829-LinearRegression2.pdf pdf]| [./lectures-handout/2-MATH829-LinearRegression2-handout.pdf pdf] || ||
+Week 2| 02\/15\/2016 | Lecture 4 | Regression consistency  |                                       |[./lectures/3-MATH829-Regression_consistency.pdf pdf] | [./lectures-handout/3-MATH829-Regression_consistency-handout.pdf pdf] ||
+|     02\/17\/2016 | Lecture 5 | Statistical tests | | [./lectures/4-MATH829-Statistical-tests.pdf pdf] | [./lectures-handout/4-MATH829-Statistical-tests-handout.pdf pdf] ||
+|     02\/19\/2016 | Lecture 6 | Subset selection |ESL, Chapter 3.3 | [./lectures/5-MATH829-Subset-selection.pdf pdf] | [./lectures-handout/5-MATH829-Subset-selection-handout.pdf pdf] || ||
+Week 3|02\/22\/2016 | Lecture 7 | Penalizing coefficients| ESL, 3.4.1, 3.4.2, 3.4.3 | [./lectures/6-MATH829-Penalizing_coef.pdf pdf] | [./lectures-handout/6-MATH829-Penalizing_coef-handout.pdf pdf] ||
+|     02\/24\/2016 | Lecture 8 | Model selection | ESL, 7.10.1, 7.10.2, 7.10.3| [./lectures/7-MATH829-Model_selection.pdf pdf] | [./lectures-handout/7-MATH829-Model_selection-handout.pdf pdf] ||
+|     02\/16\/2016 | Lecture 9 | Lasso solution |ESL, 3.8.6 | [./lectures/8-MATH829-Lasso_solution.pdf pdf] | [./lectures-handout/8-MATH829-Lasso_solution-handout.pdf pdf] || ||
+Week 4| 02\/29\/2016 | Lecture 10 | Least angle regression | ESL 3.4.4| [./lectures/9-MATH829-LARS.pdf pdf] | [./lectures-handout/9-MATH829-LARS-handout.pdf pdf] ||
+| 03\/02\/2016 | Lecture 11 | Categorical data | ESL, 2.3 | [./lectures/10-MATH829-categorical.pdf pdf] | [./lectures-handout/10-MATH829-categorical-handout.pdf pdf] ||
+| 03\/04\/2016 | Lecture 12 | Intro. to statistical decision theory | ESL, 2.4 | [./lectures/11-MATH829-stat_decision.pdf pdf] | [./lectures-handout/11-MATH829-stat_decision-handout.pdf pdf] || ||
+Week 5| 03\/07\/2016 | Lecture 13 | Logistic regression | ESL, 4.4 | [./lectures/12-MATH829-logistic.pdf pdf] | [./lectures-handout/12-MATH829-logistic-handout.pdf pdf] ||
+| 03\/09\/2016 | Lecture 14 | Linear discriminant analysis | ESL, 4.3 | [./lectures/13-MATH829-LDA.pdf pdf] | [./lectures-handout/13-MATH829-LDA-handout.pdf pdf] ||
+| 03\/11\/2016 | Lecture 15 | Support vector machines | ESL, 12.1, 12.2 | [./lectures/14-MATH829-SVM.pdf pdf] | [./lectures-handout/14-MATH829-SVM-handout.pdf pdf] || ||
+Week 6| 03\/14\/2016 | Lecture 16 | Kernels in SVM | ESL, 12.3.1 | [./lectures/15-MATH829-SVM_kernels.pdf pdf] | [./lectures-handout/15-MATH829-SVM_kernels-handout.pdf pdf] ||
+| 03\/16\/2016 | Lecture 17 | Splines |ESL, 5.1-5.4 | [./lectures/16-MATH829-splines.pdf pdf] | [./lectures-handout/16-MATH829-splines-handout.pdf pdf] ||
+| 03\/18\/2016 | Lecture 18 | Lab |ESL, 5.2.3 | [./Lab/MATH829-Lab1.pdf pdf] | [./Lab/MATH829-Lab1-handout.pdf pdf] || ||
+Week 7 | 03\/21\/2016 | Lecture 19 | Kernel smoothing | ESL, 6.1-6.5 | [./lectures/17-MATH829-kernel_smoothing.pdf pdf]| [./lectures-handout/17-MATH829-kernel_smoothing-handout.pdf pdf]||
+| 03\/23\/2016 | Lecture 20 | Density estimation | ESL, 6.6 | [./lectures/18-MATH829-kernel_density.pdf pdf]| [./lectures-handout/18-MATH829-kernel_density-handout.pdf pdf]|| 
+| 03\/25\/2016 | Midterm | In class | | | || ||
+Week 8 | | | *Spring break* | | | || ||
+Week 9 | 04\/04\/2016 | Lecture 21 | PCA | ESL, 14.5.1 | [./lectures/19-MATH829-PCA.pdf pdf] | [./lectures-handout/19-MATH829-PCA-handout.pdf pdf] ||
+| 04\/06\/2016 | Lecture 22 | Decision trees | ESL, 9.2 | [./lectures/20-MATH829-decision-tree.pdf pdf] | [./lectures-handout/20-MATH829-decision-tree-handout.pdf pdf] ||
+| 04\/08\/2016 | Lecture 23 | Random forests | ESL, 8.7, 15.1-15.3 | [./lectures/21-MATH829-Random_forest.pdf pdf]| [./lectures-handout/21-MATH829-Random_forest-handout.pdf pdf] || ||
+Week 10 | 04\/11\/2016 | Lecture 24 | Neural Networks I | ESL, 11.1-11.4| [./lectures/22-MATH829-Neural_networks.pdf pdf] | [./lectures-handout/22-MATH829-Neural_networks-handout.pdf pdf] ||
+ | 04\/13\/2016 | Lecture 25 | Neural Networks II | | [./lectures/23-MATH829-Neural_networks-II.pdf pdf] | [./lectures-handout/23-MATH829-Neural_networks-II-handout.pdf pdf] ||
+ | 04\/15\/2016 | Lecture 26 | Lab II | | [./Lab/MATH829-Lab2.pdf pdf] | [./Lab/MATH829-Lab2-handout.pdf pdf] || ||
+Week 11 | 04\/18\/2016 | Lecture 27 | The EM algorithm | ESL, 8.5.1, 8.5.2 | [./lectures/24-MATH829-EM.pdf pdf] | [./lectures-handout/24-MATH829-EM-handout.pdf pdf] ||
+| 04\/20\/2016 | Lecture 28 | The EM algorithm - part 2 | | [./lectures/25-MATH829-EM-II.pdf pdf] | [./lectures-handout/25-MATH829-EM-II-handout.pdf pdf] ||
+| 04\/22\/2016 | Lecture 29 | ICA | ESL, 14.7 | [./lectures/26-MATH829-ICA.pdf pdf] | [./lectures-handout/26-MATH829-ICA-handout.pdf pdf] || || 
+Week 12 | 04\/25\/2016 | Lecture 30 | Clustering I| ESL, 14.3 | [./lectures/27-MATH829-Clustering-I.pdf pdf] | [./lectures-handout/27-MATH829-Clustering-I-handout.pdf pdf] ||
+| 04\/27\/2016 | Lecture 31 | Clustering II | von Luxburg 2007 | [./lectures/28-MATH829-Clustering-II.pdf pdf] | [./lectures-handout/28-MATH829-Clustering-II-handout.pdf pdf] ||
+| 04\/29\/2016 | Lecture 32 | Clustering III | von Luxburg 2007 | [./lectures/29-MATH829-Clustering-III.pdf pdf] | [./lectures-handout/29-MATH829-Clustering-III-handout.pdf pdf] || ||
+Week 13 | 05\/02\/2016 | Lecture 33 | Graphical Models I | ESL, 17.1-17.2 | [./lectures/30-MATH829-Graphical-Models-I.pdf pdf] | [./lectures-handout/30-MATH829-Graphical-Models-I-handout.pdf pdf] ||
+| 05\/04\/2016 | Lecture 34 | Graphical Models II | | [./lectures/31-MATH829-Graphical-Models-II.pdf pdf] | [./lectures-handout/31-MATH829-Graphical-Models-II-handout.pdf pdf] ||
+| 05\/06\/2016 | Lecture 35 | Graphical Models III | ESL,  17.3| [./lectures/32-MATH829-Graphical-Models-III.pdf pdf] | [./lectures-handout/32-MATH829-Graphical-Models-III-handout.pdf pdf] || ||
+Week 14 | 05\/09\/2016 | Lecture 36 | Markov Chains | | [./lectures/33-MATH829-Markov-Chains.pdf pdf] | [./lectures-handout/33-MATH829-Markov-Chains-handout.pdf pdf] ||
+| 05\/11\/2016 | Lecture 37 | Hidden Markov models | | [./lectures/34-MATH829-HMM.pdf pdf] | [./lectures-handout/34-MATH829-HMM-handout.pdf pdf] ||
+| 05\/13\/2016 | Lecture 38 | Intro. to Bayesian analysis | | [./lectures/35-MATH829-IntroBayesian.pdf pdf] | [./lectures-handout/35-MATH829-IntroBayesian-handout.pdf pdf] || ||
+| 05\/23\/2016 | | *Project presentations* | 10 AM - 4 PM (Gore 114)|  [./lectures/MATH829_Talks-schedule.pdf Schedule and abstracts] | || 
+~~~
