@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.20.2 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
   Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
@@ -55,10 +55,13 @@
 
 
 
+
 <!-- end _includes/seo.html -->
 
 
-<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dominique Guillot Feed">
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dominique Guillot Feed">
+
 
 <!-- https://t.co/dKP3o1e -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,22 +72,8 @@
 
 <!-- For all browsers -->
 <link rel="stylesheet" href="/assets/css/main.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
-
-<!--[if IE]>
-  <style>
-    /* old IE unsupported flexbox fixes */
-    .greedy-nav .site-title {
-      padding-right: 3em;
-    }
-    .greedy-nav button {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-    }
-  </style>
-<![endif]-->
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
 
 
 
@@ -98,7 +87,6 @@
 
   <body class="layout--single wide2">
     <nav class="skip-links">
-  <h2 class="screen-reader-text">Skip links</h2>
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
     <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
@@ -181,23 +169,30 @@
 <h2 id="theoretical-mathematics">Theoretical mathematics</h2>
 <ol>
   <li>
-    <p>A. Belton, D. Guillot, A. Khare, M. Putinar, <em>Preservers of totally positive kernels and Pólya frequency functions</em>, to appear in Mathematics Research Reports, 2022, <a href="https://arxiv.org/abs/2110.08206">arXiv: 2110.08206</a>, 20 pages.</p>
+    <p>A. Belton, D. Guillot, A. Khare, M. Putinar, <em>Negativity-preserving transforms of tuples of symmetric matrices</em>, submitted, 2023, <a href="https://arxiv.org/abs/2310.18041">arXiv: 2310.18041</a>, 35 pages.</p>
+  </li>
+  <li>
+    <p>A. Belton, D. Guillot, A. Khare, M. Putinar, <em>Matrix positivity preservers in fixed dimension. II:positive definiteness and strict monotonicity of Schur function ratios</em>, submitted, 2023, <a href="https://arxiv.org/abs/2310.18020">arXiv:
+2310.18020</a>, 26 pages.</p>
+  </li>
+  <li>
+    <p>A. Belton, D. Guillot, A. Khare, M. Putinar, <em>Totally positive kernels, Polya frequency functions, and their transforms</em>, Journal d’Analyse Mathématique 150 no. 1, pages 83–158, 2023, <a href="https://arxiv.org/abs/2006.16213">arXiv: 2006.16213</a>, 63 pages.</p>
+  </li>
+  <li>
+    <p>A. Belton, D. Guillot, A. Khare, M. Putinar, <em>Preservers of totally positive kernels and Pólya frequency functions</em>, Mathematics Research Reports 3, pages 35–56, 2022, <a href="https://arxiv.org/abs/2110.08206">arXiv: 2110.08206</a>, 20 pages.</p>
   </li>
   <li>
     <p>A. Belton, D. Guillot, A. Khare, M. Putinar, <em>Hirschman–Widder densities</em>, to appear in Applied
 and Computational Harmonic Analysis, 2022, <a href="https://arxiv.org/abs/2101.02129">arXiv: 2101.02129</a>, 26 pages.</p>
   </li>
   <li>
-    <p>A. Belton, D. Guillot, A. Khare, M. Putinar, <em>Matrix compression along isogenic blocks</em>, to appear in Acta Scientiarum Mathematicarum, 2022, <a href="https://arxiv.org/abs/2010.14429">arXiv: 2010.14429</a>, 29 pages.</p>
+    <p>A. Belton, D. Guillot, A. Khare, M. Putinar, <em>Matrix compression along isogenic blocks</em>, Acta Scientiarum Mathematicarum (Szeged) 88 nos. 1–2, 100th anniversary special issue, pages 417–448, 2022, <a href="https://arxiv.org/abs/2010.14429">arXiv: 2010.14429</a>, 29 pages.</p>
   </li>
   <li>
-    <p>A. Belton, D. Guillot, A. Khare, M. Putinar, <em>Totally positive kernels, Polya frequency functions, and their transforms</em>, to appear in Journal d’Analyse Mathematique, 2021, <a href="https://arxiv.org/abs/2006.16213">arXiv: 2006.16213</a>, 63 pages.</p>
+    <p>A. Belton, D. Guillot, A. Khare, M. Putinar, <em>Moment-sequence transforms</em>, Journal of the European Mathematical Society 24 no. 9, pages 3109–3160, 2022, <a href="https://arxiv.org/abs/1610.05740">arXiv:1610.05740</a>, 48 pages.</p>
   </li>
   <li>
-    <p>A. Belton, D. Guillot, A. Khare, M. Putinar, <em>Moment-sequence transforms</em>, to appear in Journal of the European Mathematical Society,  <a href="https://arxiv.org/abs/1610.05740">arXiv:1610.05740</a>, 48 pages.</p>
-  </li>
-  <li>
-    <p>M. Ghandehari, D. Guillot, K. Hollingsworth, <em>Gabor-type frames for signal processing on graphs</em>, to appear in Journal of Fourier Analysis and Applications, 2020, <a href="https://arxiv.org/abs/2009.06058">arXiv:2009.06058</a>, 19 pages.</p>
+    <p>M. Ghandehari, D. Guillot, K. Hollingsworth, <em>Gabor-type frames for signal processing on graphs</em>, Journal of Fourier Analysis and Applications, 27, 2021, <a href="https://arxiv.org/abs/2009.06058">arXiv:2009.06058</a>.</p>
   </li>
   <li>
     <p>A. Belton, D. Guillot, A. Khare, M. Putinar, <em>A panorama of positivity. II: Fixed dimension</em>, Complex Analysis and Spectral Theory. Proceedings of the CRM Workshop held at Laval University, QC, May 21-25, 2018. Contemporary Mathematics. CRM Proceedings. American Mathematical Society, Providence, RI, 2020. <a href="https://arxiv.org/pdf/1812.05482.pdf">arXiv:1812.05482</a>.</p>
@@ -328,6 +323,7 @@ Processing, 2022.</p>
 
         
 
+
       </footer>
 
       
@@ -360,7 +356,7 @@ Processing, 2022.</p>
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2022 Dominique Guillot. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2023 Dominique Guillot. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>
