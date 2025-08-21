@@ -1,0 +1,754 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3. Supervised vs Unsupervised learning &#8212; Math 637 Mathematical Techniques in Data Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Content/4-Supervised-Unsupervised';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. Linear Regression" href="5-Linear-regression.html" />
+    <link rel="prev" title="2. Basic Python" href="3-Basic-Python.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="1-intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/637-logo.png" class="logo__image only-light" alt="Math 637 Mathematical Techniques in Data Science - Home"/>
+    <script>document.write(`<img src="../_static/637-logo.png" class="logo__image only-dark" alt="Math 637 Mathematical Techniques in Data Science - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="1-intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2-Python.html">1. Setting up Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-Basic-Python.html">2. Basic Python</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Supervised vs Unsupervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-Linear-regression.html">4. Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-Lab-Cars.html">5. Lab 1: Linear regression and the cars data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-Learning-outside-training.html">6. Learning outside the training set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8-Lab2-train-test.html">7. Lab 2: Training vs testing error</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9-BLUE.html">8. Best linear unbiased estimator and the bias-variance decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-Lab3-gradient-descent.html">9. Lab 3: Gradient descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-Shrinkage-methods.html">10. Improving linear regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-Model-selection.html">11. Model selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-Lab4-lasso.html">12. Lab 4: using the LASSO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14-Computing-lasso.html">13. Computing the LASSO solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="15-Lab5-coordinate-descent.html">14. Lab 5: Coordinate descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="16-LASSO-theoretical.html">15. Theoretical guarantees for the LASSO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="17-categorical-data.html">16. Analyzing categorical data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="18-Lab6-nearest-neighbors.html">17. Lab 5: nearest neighbors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FContent/4-Supervised-Unsupervised.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Content/4-Supervised-Unsupervised.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Supervised vs Unsupervised learning</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-learning">3.1. Supervised learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-handwritten-digits">3.1.1. Example: Handwritten digits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-gene-expression-data">3.1.2. Example: Gene expression data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-spam-data">3.1.3. Example: Spam data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupervised-learning">3.2. Unsupervised learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-clustering">3.2.1. Example: clustering</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-curse-of-dimensionality">3.3. The curse of dimensionality</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-data-in-1-d-and-2-d">3.3.1. Example: data in 1-D and 2-D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-curse-of-dimensionality-phenomemon">3.3.2. The curse of dimensionality phenomemon</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-linear-regression">3.3.3. Example: linear regression</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="supervised-vs-unsupervised-learning">
+<h1><span class="section-number">3. </span>Supervised vs Unsupervised learning<a class="headerlink" href="#supervised-vs-unsupervised-learning" title="Link to this heading">#</a></h1>
+<p>Two important type of problems commonly occur in data science: supervised learning and unsupervised learning.</p>
+<section id="supervised-learning">
+<h2><span class="section-number">3.1. </span>Supervised learning<a class="headerlink" href="#supervised-learning" title="Link to this heading">#</a></h2>
+<p>In supervised learning problems, an outcome variable guides the learning process.</p>
+<p>We are provided with:</p>
+<ol class="arabic simple">
+<li><p>A set of input variables (predictors or independent variables).</p></li>
+<li><p>A set of output variables (response or dependent variables).</p></li>
+</ol>
+<p>The data is therefore <em>labelled</em>.</p>
+<p>We want to use the input to predict the output. Our goal is to build a model to learn patterns in the dataset, and to use the model to predict unobserved values.</p>
+<p><strong>Important:</strong> One should keep in mind that future predictions of the model are highly dependent on previously observed data.</p>
+<ul class="simple">
+<li><p>If there is no or only a small amount of available data in a given region of the domain of interest, the model prediction can be very bad.</p></li>
+<li><p>Since predictions are based on previous data, they reinforce previous trends and can lead to biased decisions.</p></li>
+</ul>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/machine-learning3.jpg"><img alt="../_images/machine-learning3.jpg" src="../_images/machine-learning3.jpg" style="width: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.1 </span><span class="caption-text">Keep in mind that machine learning algorithms learn from previous data and tend to reinforce previous trends and biases.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Let us look at some examples of supervised learning problems.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Later in the course, you will have the opportunity to examine the datasets given below and to construct models to analyze them.</p>
+</div>
+<section id="example-handwritten-digits">
+<span id="e-handwritten-digits"></span><h3><span class="section-number">3.1.1. </span>Example: Handwritten digits<a class="headerlink" href="#example-handwritten-digits" title="Link to this heading">#</a></h3>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/digits.png"><img alt="../_images/digits.png" src="../_images/digits.png" style="width: 500px;" />
+</a>
+</figure>
+<ul class="simple">
+<li><p>You are provided a <a href="https://en.wikipedia.org/wiki/MNIST_database" target="_blank">dataset</a> containing images (16 x 16 grayscale images say) of digits.</p></li>
+<li><p>Each image contains a single digit.</p></li>
+<li><p>Each image is labelled with the corresponding digit.</p></li>
+<li><p>After reshaping, you can think of each image as a vector in <span class="math notranslate nohighlight">\(X \in \mathbb{R}^{256}\)</span> and the label as a scalar <span class="math notranslate nohighlight">\(Y \in \{0,\dots,9\}\)</span>.</p></li>
+</ul>
+<p><strong>Idea:</strong> with a large enough dataset, we should be able to <em>learn</em> to identify/predict digits automatically.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A possible application of such a model is to read zip codes on envelopes and automatically sort mail. More sophisticated versions with datasets containing all letters of the alphabet can also be used to construct models that can convert handwritten text to digital text.</p>
+</div>
+</section>
+<section id="example-gene-expression-data">
+<span id="e-gene-expression"></span><h3><span class="section-number">3.1.2. </span>Example: Gene expression data<a class="headerlink" href="#example-gene-expression-data" title="Link to this heading">#</a></h3>
+<p>DNA microarrays can be used to measure the <a href="https://en.wikipedia.org/wiki/Gene_expression" target="_blank">expression</a> of a gene in a cell – see figure below (rows = genes, columns = sample).</p>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/gene_expression.png"><img alt="../_images/gene_expression.png" src="../_images/gene_expression.png" style="width: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.2 </span><span class="caption-text">ESL, Figure 1.3.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Suppose the gene expression of millions of genes are measured for cells from patients with and without a certain type of cancer. (Note how the data is <em>labelled</em>, i.e., we know if each sample is associated to cancer or not.)</p>
+<p>Can a model be constructed to predict if a patient has the cancer based on their gene expression? Note that such a model may be able to detect the cancer before signs of the cancer start to appear.</p>
+</section>
+<section id="example-spam-data">
+<h3><span class="section-number">3.1.3. </span>Example: Spam data<a class="headerlink" href="#example-spam-data" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>A dataset contains information from 4601 email messages, in a study to screen email for “spam” (i.e., junk email).</p></li>
+<li><p>The data was donated by George Forman from Hewlett-Packard laboratories.</p></li>
+</ul>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="../_images/ESL_Table1p1.png"><img alt="../_images/ESL_Table1p1.png" src="../_images/ESL_Table1p1.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.3 </span><span class="caption-text">ESL, Table 1.1.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Each message is labelled as spam/email.</p></li>
+<li><p>Each message contains characteristics such as the count of different words and symbols.</p></li>
+</ul>
+<p>We would like to build a model that automatically identifies if a given email is spam or not.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The common feature in supervised learning is that the data is labelled. Obtaining labelled data of good quality can be tedious and expensive, especially if it involves the intervention of a human to perform the labelling. This is a serious limitation to supervised learning.</p>
+</div>
+</section>
+</section>
+<section id="unsupervised-learning">
+<h2><span class="section-number">3.2. </span>Unsupervised learning<a class="headerlink" href="#unsupervised-learning" title="Link to this heading">#</a></h2>
+<p>In unsupervised learning problems, we observe only features. There is therefore <strong>no dependent variable</strong> (or label). Our goal is to detect structure, patterns, etc..</p>
+<section id="example-clustering">
+<h3><span class="section-number">3.2.1. </span>Example: clustering<a class="headerlink" href="#example-clustering" title="Link to this heading">#</a></h3>
+<p>A typical unsupervised learning problem is to automatically detect <em>clusters</em> in data.</p>
+<p>For example, consider the following two-dimensional data:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/clusters_bw.png"><img alt="../_images/clusters_bw.png" src="../_images/clusters_bw.png" style="width: 300px;" />
+</a>
+</figure>
+<p>One very naturally groups (or <em>clusters</em>) the data. The figure below was produced with a computer algorithm that labelled the data points according to the group structure present in the data:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/clusters.png"><img alt="../_images/clusters.png" src="../_images/clusters.png" style="width: 300px;" />
+</a>
+</figure>
+<p>Notice that the original data points have no labels. Nevertheless, the cluster structure can reaveal a lot of information about the data. For example, in a database containing customers’ information, customers with similar characteristics or behavior may create clusters. One can then try to identify what are the common characteristics of customers in a given cluster. This can yield significant insights about customer behavior.</p>
+<p>Another nice application of clustering is image segmentation, where the goal is to divide an image into meaningful parts (e.g., separate objects).</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/image_seg.jpg"><img alt="../_images/image_seg.jpg" src="../_images/image_seg.jpg" style="width: 300px;" />
+</a>
+</figure>
+<p>Once relevant “parts” of an image have been discovered, one can try to automatically label them with the computer as in the image above.</p>
+</section>
+</section>
+<section id="the-curse-of-dimensionality">
+<h2><span class="section-number">3.3. </span>The curse of dimensionality<a class="headerlink" href="#the-curse-of-dimensionality" title="Link to this heading">#</a></h2>
+<p>In modern problems, we typically have to work with a very large number of variables (also called <em>features</em>). For example, the customer database of a large insurance company may contain dozens of features of each customer (e.g., their age, income, number of recent accidents, the model of car they own, their car value, etc.). Recall that future predictions made by a model heavily dependent on previous data. As a result, in order to make accurate predictions, it is important to have observations (also called <em>samples</em>) that cover the possible range of the features very well. It is important to realize that, as the number of features increases, the number of samples required to get a good coverage <strong>dramatically increases</strong>.</p>
+<section id="example-data-in-1-d-and-2-d">
+<h3><span class="section-number">3.3.1. </span>Example: data in 1-D and 2-D<a class="headerlink" href="#example-data-in-1-d-and-2-d" title="Link to this heading">#</a></h3>
+<p>Consider a dataset where only one feature is measured. For example, let us say we are trying to determine if a person has a cancer based on the gene expression of a single one of their genes (see the <a class="reference internal" href="#e-gene-expression"><span class="std std-ref">Example: Gene expression data</span></a> above). Assume the gene measurements lie in the interval <span class="math notranslate nohighlight">\([0,1]\)</span>. Suppose the following data is available (where <span class="math notranslate nohighlight">\(0=\)</span>no cancer, and <span class="math notranslate nohighlight">\(1=\)</span>cancer):</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Gene #1</p></th>
+<th class="head"><p>Cancer</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.2</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.3</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>0.4</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.5</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>0.6</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.7</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>0.8</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.9</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>1.0</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Representing the data on the real line, one may be fairly confident to have enough coverage of the interval <span class="math notranslate nohighlight">\([0,1]\)</span> to be able to be able to capture which regions are more prone to representing cancer or not.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/no-cancer.png"><img alt="../_images/no-cancer.png" src="../_images/no-cancer.png" style="width: 700px;" />
+</a>
+</figure>
+<p>Here 11 samples were required so that every point in the interval <span class="math notranslate nohighlight">\([0,1]\)</span> is at a distance at most <span class="math notranslate nohighlight">\(0.05\)</span> from one of the samples.</p>
+<p>Now, let us see how the situation changes when 2 genes are measured:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/no-cancer-2d.png"><img alt="../_images/no-cancer-2d.png" src="../_images/no-cancer-2d.png" style="width: 700px;" />
+</a>
+</figure>
+<p>Observe how we now need 121 points on a <span class="math notranslate nohighlight">\(0.1 \times 0.1\)</span> grid to mimic the coverage we had in 1-dimension. Also observe that the coverage is not even as good: points in the middle of every <span class="math notranslate nohighlight">\(0.1 \times 0.1\)</span> “square” are at a distance <span class="math notranslate nohighlight">\(\sqrt{0.05^2 + 0.05^2} = 0.05 \sqrt{2} \approx 0.0707\)</span> from any of the samples.</p>
+<p>More generally, in dimension <span class="math notranslate nohighlight">\(d\)</span>, a “hyper-grid” with sidelength <span class="math notranslate nohighlight">\(0.1\)</span> in the hypercube <span class="math notranslate nohighlight">\([0,1]^d\)</span> contains <span class="math notranslate nohighlight">\(11^d\)</span> grid points. For example, with <span class="math notranslate nohighlight">\(d = 50\)</span> (still a small number of genes to try to predict cancer), the number of grid points is about <span class="math notranslate nohighlight">\(4.177 \times 10^{15}\)</span>. As a fun comparison, this is rougly the number of grains of sand in a <span class="math notranslate nohighlight">\(65\)</span> cubic meter of sand! This is also about <span class="math notranslate nohighlight">\(522,500\)</span> times the 2025 population of the Earth! There is no way we can collect so many samples to solve our cancer problem…</p>
+</section>
+<section id="the-curse-of-dimensionality-phenomemon">
+<h3><span class="section-number">3.3.2. </span>The curse of dimensionality phenomemon<a class="headerlink" href="#the-curse-of-dimensionality-phenomemon" title="Link to this heading">#</a></h3>
+<p>The above illustrates that, as the number of features increases, the volume of the space grows so fast that data becomes sparse (i.e., the data does not cover the space well at all). This phenomenon is known as the <strong>curse of dimensionality</strong>. Without any supplementary structure, one would expect needing a number of samples exponential in the number of features in order to build a model that makes good prediction. Thankfully, in the real world, there is typically structure that we can exploit to construct good models without needing an excessive amount of data.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In mathematics, a <em>sparse</em> vector is a vector that contains a lot of zero entries. The <em>sparsity</em> of a vector is the percentage of its entries that are equal to <span class="math notranslate nohighlight">\(0\)</span>. Similarly, a sparse matrix is a matrix with a large percentage of its entries equal to <span class="math notranslate nohighlight">\(0\)</span>. In contrast, a matrix that does not contain any significant number of zero entries is said to be <em>dense</em>. Many numerical algorithms in linear algebra can be developed to exploit sparsity and efficiently solve problems in very high dimensions. One example is sparse linear solvers. A typical laptop in 2025 can solve a system of equations with ten millions of unknowns and about 10 nonzeros per row in a few seconds to a few minutes. In contrast, an algorithm that doesn’t exploit the sparsity of the system can take days or even weeks to solve the same system on the same machine.</p>
+</div>
+</section>
+<section id="example-linear-regression">
+<h3><span class="section-number">3.3.3. </span>Example: linear regression<a class="headerlink" href="#example-linear-regression" title="Link to this heading">#</a></h3>
+<p>In a linear regression model, one attempts to predict the dependent variable <span class="math notranslate nohighlight">\(Y\)</span> using a <em>linear combination</em> of the predictors <span class="math notranslate nohighlight">\(X_1, X_2, \dots, X_p\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(
+Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \dots + \beta_p X_p.
+\)</span></p>
+<p>In traditional statistics, it is common to assume the number of samples available to observe this relationship (usually denoted by <span class="math notranslate nohighlight">\(n\)</span>) is much larger than the number of variables (<span class="math notranslate nohighlight">\(p\)</span>), and is at least greater than <span class="math notranslate nohighlight">\(p\)</span>. However, in many modern problems, the number of variables is often much larger than the number of samples. Think for example of the gene expression problem (<a class="reference internal" href="#e-gene-expression"><span class="std std-ref">Example: Gene expression data</span></a>), where there are millions of genes a researcher may want to consider to detect a cancer, but there is only a small number of patients available in the study (e.g., 100). Here, one needs to make use of additional structure in order to be able to build a good model. In that case, it is natural to assume only a handful of genes are good predictors for a given cancer (i.e., many of the regression coefficients <span class="math notranslate nohighlight">\(\beta_i\)</span> are equal to <span class="math notranslate nohighlight">\(0\)</span>). The problem though is we do not know which ones are non-zero. As we will see in future chapters, there are well-known methods (e.g., LASSO regression) that attempt to detect non-zero coefficients in linear regression. Such methods can be used to build linear models even when the sample size is much smaller than the number of variables.</p>
+<div class="warning admonition">
+<p class="admonition-title">Assignment</p>
+<p>Please complete Homework 1 on <a href="https://sites.udel.edu/canvas/" target="_blank">Canvas</a> before continuing to read.</p>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="3-Basic-Python.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Basic Python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="5-Linear-regression.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Linear Regression</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-learning">3.1. Supervised learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-handwritten-digits">3.1.1. Example: Handwritten digits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-gene-expression-data">3.1.2. Example: Gene expression data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-spam-data">3.1.3. Example: Spam data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupervised-learning">3.2. Unsupervised learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-clustering">3.2.1. Example: clustering</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-curse-of-dimensionality">3.3. The curse of dimensionality</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-data-in-1-d-and-2-d">3.3.1. Example: data in 1-D and 2-D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-curse-of-dimensionality-phenomemon">3.3.2. The curse of dimensionality phenomemon</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-linear-regression">3.3.3. Example: linear regression</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dominique Guillot
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
