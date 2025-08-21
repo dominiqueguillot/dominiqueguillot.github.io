@@ -60,6 +60,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Content/15-Lab5-coordinate-descent';</script>
+    <link rel="canonical" href="/637book/Content/15-Lab5-coordinate-descent.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="15. Theoretical guarantees for the LASSO" href="16-LASSO-theoretical.html" />
@@ -198,7 +199,7 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">14. Lab 5: Coordinate descent</a></li>
 <li class="toctree-l1"><a class="reference internal" href="16-LASSO-theoretical.html">15. Theoretical guarantees for the LASSO</a></li>
 <li class="toctree-l1"><a class="reference internal" href="17-categorical-data.html">16. Analyzing categorical data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="18-Lab6-nearest-neighbors.html">17. Lab 5: nearest neighbors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="18-Lab6-nearest-neighbors.html">17. Lab 6: nearest neighbors</a></li>
 </ul>
 
     </div>
@@ -240,53 +241,6 @@
         <div class="header-article-item">
 
 <div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-source-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
-   class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">Repository</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FContent/15-Lab5-coordinate-descent.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">Open issue</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
 
 
 
@@ -537,75 +491,58 @@ x^{(k+1)}_p &amp;= \mathop{\textrm{argmin}}_x f(x_1^{(k+1)}, x_2^{(k+1)}, \dots 
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iter 	 Grad 	 Err
-1 	 0.672649 	 0.934085
-2 	 0.386600 	 0.905496
-3 	 0.292496 	 0.895242
-4 	 0.269366 	 0.890355
-5 	 0.253504 	 0.887120
-6 	 0.231665 	 0.884623
-7 	 0.205381 	 0.882661
-8 	 0.177879 	 0.881159
-9 	 0.151470 	 0.880046
-10 	 0.127417 	 0.879244
-11 	 0.106241 	 0.878677
-12 	 0.088018 	 0.878284
-13 	 0.072580 	 0.878014
-14 	 0.059642 	 0.877831
-15 	 0.048887 	 0.877707
-16 	 0.039995 	 0.877624
-17 	 0.032675 	 0.877568
-18 	 0.026667 	 0.877531
-19 	 0.021746 	 0.877506
-20 	 0.017724 	 0.877490
-21 	 0.014439 	 0.877479
-22 	 0.011759 	 0.877472
-23 	 0.009574 	 0.877467
-24 	 0.007794 	 0.877464
-25 	 0.006344 	 0.877462
-26 	 0.005163 	 0.877460
-27 	 0.004202 	 0.877459
-28 	 0.003419 	 0.877459
-29 	 0.002782 	 0.877458
-30 	 0.002264 	 0.877458
-31 	 0.001842 	 0.877458
-32 	 0.001499 	 0.877458
-33 	 0.001220 	 0.877458
-34 	 0.000992 	 0.877458
-35 	 0.000807 	 0.877458
-36 	 0.000657 	 0.877458
-37 	 0.000535 	 0.877457
-38 	 0.000435 	 0.877457
-39 	 0.000354 	 0.877457
-40 	 0.000288 	 0.877457
-41 	 0.000234 	 0.877457
-42 	 0.000191 	 0.877457
-43 	 0.000155 	 0.877457
-44 	 0.000126 	 0.877457
-45 	 0.000103 	 0.877457
-46 	 0.000084 	 0.877457
-47 	 0.000068 	 0.877457
-48 	 0.000055 	 0.877457
-49 	 0.000045 	 0.877457
-50 	 0.000037 	 0.877457
-51 	 0.000030 	 0.877457
-52 	 0.000024 	 0.877457
-53 	 0.000020 	 0.877457
-54 	 0.000016 	 0.877457
-55 	 0.000013 	 0.877457
-56 	 0.000011 	 0.877457
-57 	 0.000009 	 0.877457
-58 	 0.000007 	 0.877457
-59 	 0.000006 	 0.877457
-60 	 0.000005 	 0.877457
-61 	 0.000004 	 0.877457
-62 	 0.000003 	 0.877457
-63 	 0.000003 	 0.877457
-64 	 0.000002 	 0.877457
-65 	 0.000002 	 0.877457
-66 	 0.000001 	 0.877457
-67 	 0.000001 	 0.877457
-68 	 0.000001 	 0.877457
-[ 3.75604019e-07  2.09933829e-08 -3.84989768e-07]
+1 	 0.954070 	 0.939715
+2 	 0.584466 	 0.850417
+3 	 0.356145 	 0.814383
+4 	 0.215657 	 0.800604
+5 	 0.129680 	 0.795509
+6 	 0.077469 	 0.793672
+7 	 0.046127 	 0.793026
+8 	 0.027654 	 0.792805
+9 	 0.017075 	 0.792731
+10 	 0.011243 	 0.792706
+11 	 0.008102 	 0.792697
+12 	 0.006322 	 0.792693
+13 	 0.005159 	 0.792691
+14 	 0.004276 	 0.792689
+15 	 0.003544 	 0.792688
+16 	 0.002922 	 0.792687
+17 	 0.002392 	 0.792687
+18 	 0.001945 	 0.792686
+19 	 0.001573 	 0.792686
+20 	 0.001265 	 0.792686
+21 	 0.001014 	 0.792686
+22 	 0.000810 	 0.792686
+23 	 0.000646 	 0.792685
+24 	 0.000514 	 0.792685
+25 	 0.000408 	 0.792685
+26 	 0.000324 	 0.792685
+27 	 0.000256 	 0.792685
+28 	 0.000203 	 0.792685
+29 	 0.000161 	 0.792685
+30 	 0.000127 	 0.792685
+31 	 0.000100 	 0.792685
+32 	 0.000079 	 0.792685
+33 	 0.000063 	 0.792685
+34 	 0.000049 	 0.792685
+35 	 0.000039 	 0.792685
+36 	 0.000031 	 0.792685
+37 	 0.000024 	 0.792685
+38 	 0.000019 	 0.792685
+39 	 0.000015 	 0.792685
+40 	 0.000012 	 0.792685
+41 	 0.000009 	 0.792685
+42 	 0.000007 	 0.792685
+43 	 0.000006 	 0.792685
+44 	 0.000005 	 0.792685
+45 	 0.000004 	 0.792685
+46 	 0.000003 	 0.792685
+47 	 0.000002 	 0.792685
+48 	 0.000002 	 0.792685
+49 	 0.000001 	 0.792685
+50 	 0.000001 	 0.792685
+51 	 0.000001 	 0.792685
+[ 2.06896746e-07  5.52669806e-07 -4.93305344e-07]
 </pre></div>
 </div>
 </div>
